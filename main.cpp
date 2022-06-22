@@ -146,7 +146,7 @@ auto toByteArray(std::bitset<ULen> &data) {
 	const std::bitset<ULen> mask{0xFF};
 	size_t index = ULen / 8;
 
-	for (int i = 0; i < ULen / 8; i++) {
+	for (size_t i = 0; i < ULen / 8; i++) {
 		uint8_t byte = (data & mask).to_ulong();
 		res[--index] = byte;
 		data = (data >> 8);
