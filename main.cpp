@@ -108,6 +108,7 @@ std::string strXor(const std::string &s1, const std::string &s2) {
 	return result;
 }
 
+/* sha256 function */
 std::string sha256(std::span<uint8_t> data) {
 	unsigned char hash[SHA256_DIGEST_LENGTH];
 	SHA256_CTX sha256;
@@ -146,7 +147,7 @@ auto toByteArray(std::bitset<ULen> &data) {
 	const std::bitset<ULen> mask{0xFF};
 	size_t index = ULen / 8;
 
-	for (int i = 0; i < ULen / 8; i++) {
+	for (size_t i = 0; i < ULen / 8; i++) {
 		uint8_t byte = (data & mask).to_ulong();
 		res[--index] = byte;
 		data = (data >> 8);
@@ -163,9 +164,11 @@ int main() {
 
 	std::array<std::bitset<A>, n> data = generateData<A, n>();
 
+	/*
 	for (auto x : data) {
 		std::cout << x << std::endl;
 	}
+	*/
 
 	std::array<std::array<uint8_t, A / 8>, n> res;
 
